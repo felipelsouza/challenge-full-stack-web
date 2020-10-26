@@ -1,6 +1,6 @@
 <template>
-  <div class="add-student">
-    <v-subheader>Cadastrar Aluno</v-subheader>
+  <div class="edit-student">
+    <v-subheader>Editar Aluno</v-subheader>
     <v-card>
       <Form />
     </v-card>

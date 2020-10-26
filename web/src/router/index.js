@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Students from '../views/Students.vue'
 import AddStudent from '../views/AddStudent.vue'
+import EditStudent from '../views/EditStudent.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/add-student',
     name: 'AddStudent',
     component: AddStudent
+  },
+  {
+    path: '/edit-student',
+    mame: 'EditStudent',
+    component: EditStudent
   }
 ]
 
