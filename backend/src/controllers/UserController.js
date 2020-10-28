@@ -21,7 +21,7 @@ module.exports = {
         const { name, email } = req.body;
 
         const user = await User.findByPk(id)
-            .then(user => user.update({ email, name }));
+            .then(user => user.update({ name, email }));
 
         return res.json(user);
     },

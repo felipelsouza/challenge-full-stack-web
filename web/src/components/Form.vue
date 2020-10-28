@@ -46,6 +46,8 @@
 </template>
 
 <script>
+import User from "../services/users";
+
 export default {
   data() {
     return {
@@ -68,7 +70,8 @@ export default {
   },
 
   methods: {
-    submit() {
+    async submit() {
+      await User.create(this.name, this.email, this.cpf);
       alert("Cadastro realizado com sucesso!");
       this.$router.push("/");
     },
