@@ -47,11 +47,20 @@
 </template>
 
 <script>
+import User from '../services/users';
+
 export default {
   name: "Students",
 
+  mounted() {
+    User.index().then(res => {
+      this.students = res.data
+    });
+  },
+
   data() {
     return {
+      students: [],
       search: "",
       dialogDelete: false,
 
@@ -59,7 +68,7 @@ export default {
         {
           text: "Registro Acadêmico",
           align: "start",
-          value: "ra",
+          value: "id",
         },
         {
           text: "Nome",
@@ -79,27 +88,6 @@ export default {
           text: "",
           value: "actions",
           sortable: false,
-        },
-      ],
-
-      students: [
-        {
-          ra: 1,
-          name: "Felipe",
-          cpf: "11111111111",
-          email: "felipe@gmail.com",
-        },
-        {
-          ra: 2,
-          name: "Maria",
-          cpf: "11111111111",
-          email: "maria@gmail.com",
-        },
-        {
-          ra: 3,
-          name: "João",
-          cpf: "11111111111",
-          email: "joao@gmail.com",
         },
       ],
     };
