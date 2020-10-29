@@ -24,6 +24,7 @@
           <v-spacer></v-spacer>
           <v-col cols="9" md="3">
             <v-text-field
+              v-if="cpf.length === 0"
               v-model="cpf"
               label="CPF"
               :counter="11"
@@ -35,10 +36,19 @@
         </v-row>
         <v-row class="ma-9">
           <v-spacer></v-spacer>
-          <router-link :to="'/'" style="text-decoration: none">
+          <router-link 
+            :to="'/'" 
+            style="text-decoration: none"
+          >
             <v-btn class="mr-4">Cancelar</v-btn>
           </router-link>
-          <v-btn class="mr-4" type="submit" :disabled="!valid">Salvar</v-btn>
+          <v-btn 
+            class="mr-4" 
+            type="submit" 
+            :disabled="!valid"
+          >
+            Salvar
+          </v-btn>
         </v-row>
       </v-form>
     </v-container>
@@ -49,9 +59,23 @@
 import User from "../services/users";
 
 export default {
+  props: {
+    studentToEdit: Object
+  },
+
+  mounted() {
+    if(this.studentToEdit) {
+      this.id = this.studentToEdit.id;
+      this.name = this.studentToEdit.name;
+      this.email = this.studentToEdit.email;
+      this.cpf = this.studentToEdit.cpf;
+    }
+  },
+
   data() {
     return {
       valid: false,
+      id: 0,
       name: "",
       email: "",
       cpf: "",
@@ -71,10 +95,16 @@ export default {
 
   methods: {
     async submit() {
-      await User.create(this.name, this.email, this.cpf);
-      alert("Cadastro realizado com sucesso!");
-      this.$router.push("/");
-    },
+      if(!this.studentToEdit) {
+        await User.create(this.name, this.email, this.cpf);
+        alert("Cadastro realizado com sucesso!");
+        this.$router.push("/");
+      } else {
+        await User.update(this.id, this.name, this.email);
+        alert("Aluno editado com sucesso!");
+        this.$router.push("/");
+      }
+    }
   },
 };
 </script>

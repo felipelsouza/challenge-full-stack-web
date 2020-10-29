@@ -18,7 +18,7 @@ const routes = [
     component: AddStudent
   },
   {
-    path: '/edit-student',
+    path: '/edit-student/:id',
     mame: 'EditStudent',
     component: EditStudent
   }

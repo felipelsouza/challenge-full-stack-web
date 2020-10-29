@@ -11,6 +11,8 @@
 import Form from "../components/Form";
 
 export default {
+  name: "EditStudent",
+
   components: { Form },
 };
 </script>
