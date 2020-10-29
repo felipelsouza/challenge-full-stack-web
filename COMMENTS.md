@@ -9,8 +9,8 @@ GrupoA Educação - Full Stack Web Developer
 - Banco de Dados utilizado: MYSQL
 
 **Frontend**
-Framework de UI: Vuetify
-Consumo de dados da API: Axios  
+- Framework de UI: Vuetify
+- Consumo de dados da API: Axios  
 
 ## Bibliotecas e Dependências Utilizadas
 **Backend**
